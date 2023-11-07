@@ -1,0 +1,8 @@
+[submodule "CryoREAD"]
+	path = CryoREAD
+	url = https://github.com/kiharalab/CryoREAD
+	branch = main
+[submodule "DiffModeler"]
+	path = DiffModeler
+	url = https://github.com/kiharalab/DiffModeler
+	branch = main
