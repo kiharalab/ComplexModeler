@@ -39,7 +39,7 @@ def pdb2cif(pdb_file, cif_file):
 
     # Write the modified structure to a new CIF file
     with open(cif_file, 'w') as f:
-        f.write("data_DRNA\n#\n")
+        f.write("data_ComplexModeler\n#\n")
         # f.write("_audit_creation_method     'Diffusion Fitting'\n")
         # f.write("_audit_creation_date       \n")
         # f.write("_audit_author_name         'Xiao Wang'\n")

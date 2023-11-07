@@ -93,7 +93,13 @@ def extract_compressed_file(file_path, extract_dir):
 
 def cat_file(file_list,output_file):
     with open(output_file,'w') as wfile:
+        first_flag=True
         for file_name in file_list:
             with open(file_name,'r') as rfile:
                 for line in rfile:
-                    wfile.write(line)
+                    if first_flag:
+                        wfile.write(line)
+                    else:
+                        if line.startswith("ATOM"):
+                            wfile.write(line)
+            first_flag=False
