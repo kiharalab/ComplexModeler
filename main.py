@@ -62,7 +62,7 @@ if __name__ == "__main__":
     best_model_path = os.path.join(cryoread_script,"best_model")
     cryoread_script = os.path.join(cryoread_script,"main.py")
     half_contour = params['contour']/2
-    command_line=f"python3 %s --mode=0 -F={cur_map_path} -M {best_model_path}" \
+    command_line=f"python3 %s --mode=0 -F={cur_map_path} -M {best_model_path} " \
                  f"--contour={half_contour} " \
                  f"--batch_size=4 --prediction_only --output {save_path} "%(cryoread_script)
     os.system(command_line)
