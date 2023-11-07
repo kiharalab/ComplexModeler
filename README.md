@@ -107,5 +107,71 @@ Chimera (for map visualization): https://www.cgl.ucsf.edu/chimera/download.html
 
 # Usage
 
+<details>
+<summary>Command Parameters</summary>
+
+```
+usage: main.py [-h] -F F [-P P] [--resolution RESOLUTION] [--gpu GPU] [--output OUTPUT]
+               [--contour CONTOUR] [--refine] [--gpu_only]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -F F                  input map path
+  -P P                  input fasta path
+  --resolution RESOLUTION
+                        resolution for diffusion and structure refinement
+  --gpu GPU             specify the gpu we will use
+  --output OUTPUT       Output directory
+  --contour CONTOUR     Contour level for input map, suggested 0.5*[author_contour]. (Float), Default
+                        value: 0.0
+  --refine              Optional Input. Do the last step refinement or not (Suggested to set as True).
+  --gpu_only            only run GPU related part, server use only
+```
+</details>
+
+<details>
+<summary>Complex Structure Modeling</summary>
+
+### Complex Structure Modeling
+```commandline
+python3 main.py -F=[Map_Path] -P=[Fasta_Path] --contour=[contour_level] --gpu=[GPU_ID] --output=[Output_Directory] resolution=[Map_Resolution]
+```
+[Map_Path] is the path of the experimental cryo-EM map <br>
+[Fasta_Path] is the path of the input fasta file about sequence information. <b>The sequence information of protein is required but can be partial, DNA/RNA sequence information is optional</b><br>
+[contour_level] is the contour_level (suggested by author) to remove outside regions to save processing time. This is absolute density threshold, not standard deviation. If you are not sure, just set 0. Our model will automatically detect useful regions. <br>
+[GPU_ID] specifies the gpu used for inference<br>
+[Output_Directory] specifies the directory you want to save the output. If you don't specify, the default will be "Predict_Result/[map_name]". The final structure is kept as ComplexModeler.cif in this directory. <br>
+[Map_Resolution] is the resolution of the deposited maps, which is for refinement usage.
+
+Example of fasta file
+```
+>A,B,C,D
+MATPAGRRASETERLLTPNPGYGTQVGTSPAPTTPTEEEDLRR
+>E,F
+VVTFREENTIAFRHLFLLGYSDGSDDTFAAYTQEQLYQ
+```
+For ID line, please only include the chain id without any other information. If multiple chains include the identical sequences, please use comma "," to split different chains.
+<br> In this example, we have 6 chains in total, with A,B,C,D share the identical sequences and E,F share another identical sequences.
+<br> Here sequence information of protein is required but can be partial, DNA/RNA sequence information is optional.
+
+If you have successfully installed phenix and coot, please also specify ```--refine``` in the command line to refine structures.
+
+### Example Command
+```commandline
+python3 main.py -F=example/21051.mrc -P=example/21051.fasta --contour=0.6 --gpu=0 --output=output_21051 resolution=3.7
+```
+The automatically build atomic structure is saved in output_21051/Complex_Modeler.cif. 
+<br>If you have successfully installed phenix and coot, please also specify ```--refine``` in the command line to refine structures.
+
+</details>
 
 
+## Example
+### Input File
+Cryo-EM map with mrc format. 
+Sequence information with fasta format.
+Our example input can be found [here](https://github.com/kiharalab/ComplexModeler/tree/main/example)
+
+### Output File 
+ComplexModeler.cif: a CIF file that stores the atomic protein-DNA/RNA structure by our method.
+Our example output can be found [here](https://kiharalab.org/emsuites/complexmodeler/output). All the intermediate results are also kept here. 
