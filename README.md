@@ -134,7 +134,7 @@ optional arguments:
 
 ### Complex Structure Modeling
 ```commandline
-python3 main.py -F=[Map_Path] -P=[Fasta_Path] --contour=[contour_level] --gpu=[GPU_ID] --output=[Output_Directory] resolution=[Map_Resolution]
+python3 main.py -F=[Map_Path] -P=[Fasta_Path] --contour=[contour_level] --gpu=[GPU_ID] --output=[Output_Directory] --resolution=[Map_Resolution]
 ```
 [Map_Path] is the path of the experimental cryo-EM map <br>
 [Fasta_Path] is the path of the input fasta file about sequence information. <b>The sequence information of protein is required but can be partial, DNA/RNA sequence information is optional</b><br>
@@ -158,7 +158,7 @@ If you have successfully installed phenix and coot, please also specify ```--ref
 
 ### Example Command
 ```commandline
-python3 main.py -F=example/21051.mrc -P=example/21051.fasta --contour=0.6 --gpu=0 --output=output_21051 resolution=3.7
+python3 main.py -F=example/21051.mrc -P=example/21051.fasta --contour=0.6 --gpu=0 --output=output_21051 --resolution=3.7
 ```
 The automatically build atomic structure is saved in output_21051/Complex_Modeler.cif. 
 <br>If you have successfully installed phenix and coot, please also specify ```--refine``` in the command line to refine structures.
@@ -167,6 +167,8 @@ The automatically build atomic structure is saved in output_21051/Complex_Modele
 
 
 ## Example
+<details>
+
 ### Input File
 Cryo-EM map with mrc format. 
 Sequence information with fasta format.
@@ -175,3 +177,5 @@ Our example input can be found [here](https://github.com/kiharalab/ComplexModele
 ### Output File 
 ComplexModeler.cif: a CIF file that stores the atomic protein-DNA/RNA structure by our method.
 Our example output can be found [here](https://kiharalab.org/emsuites/complexmodeler/output). All the intermediate results are also kept here. 
+
+</details>
