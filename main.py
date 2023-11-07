@@ -81,7 +81,7 @@ if __name__ == "__main__":
     diffmodeler_config = os.path.join(diffmodeler_config,"config")
     diffmodeler_config = os.path.join(diffmodeler_config,"diffmodeler.json")
     resolution = params['resolution']
-    command_line=f"python3 main.py --mode=2 -F={protein_map_path} -P={protein_fasta_path} " \
+    command_line=f"python3 {diffmodeler_script} --mode=2 -F={protein_map_path} -P={protein_fasta_path} " \
                  f"--config={diffmodeler_config} --contour={half_contour}  " \
                  f"--resolution={resolution} --output {save_path}"
     os.system(command_line)
