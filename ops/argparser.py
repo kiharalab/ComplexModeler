@@ -13,6 +13,7 @@ def argparser():
     parser.add_argument("--output",type=str,help="Output directory")
     parser.add_argument("--contour",type=float,default=0,help="Contour level for input map, suggested 0.5*[author_contour]. (Float), Default value: 0.0")
     parser.add_argument("--refine",action="store_true",help="Optional Input. Do the last step refinement or not (Suggested to set as True).")
+    parser.add_argument("--gpu_only",action="store_true",help="only run GPU related part, server use only")
     args = parser.parse_args()
     params = vars(args)
     return params

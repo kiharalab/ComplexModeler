@@ -90,3 +90,10 @@ def extract_compressed_file(file_path, extract_dir):
         return
 
     print(f"Successfully extracted {file_path} to {extract_dir}")
+
+def cat_file(file_list,output_file):
+    with open(output_file,'w') as wfile:
+        for file_name in file_list:
+            with open(file_name,'r') as rfile:
+                for line in rfile:
+                    wfile.write(line)

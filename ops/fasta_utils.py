@@ -57,3 +57,15 @@ def write_drna_fasta(dna_fasta_path,chain_dict,dna_id_list):
                     wfile.write(item)
                 wfile.write("\n")
     return dna_fasta_path
+
+def write_fasta(dna_fasta_path,chain_dict,dna_id_list):
+    with open(dna_fasta_path,'w') as wfile:
+        for key in chain_dict:
+            if key not in dna_id_list:
+                continue
+            wfile.write(">%s\n"%key)
+            fasta_list = chain_dict[key]
+            for item in fasta_list:
+                wfile.write(item)
+            wfile.write("\n")
+    return dna_fasta_path
