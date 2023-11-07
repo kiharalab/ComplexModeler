@@ -68,19 +68,19 @@ def reindex_cif(final_pdb_path,final_cif_path):
     :param final_cif_path: final output cif renumber atom and sequence
     :return:
     """
-    begin_check=False
+    begin_check=0
     block_list=[]
     with open(final_pdb_path,'r') as rfile:
         for line in rfile:
-            if "loop_" in line:
-                begin_check=True
+            if "loop_" in line and begin_check==0:
+                begin_check=1
                 continue
 
-            if begin_check and "_atom_site" in line:
+            if begin_check==1 and "_atom_site" in line:
                 block_list.append(line.strip("\n").replace(" ",""))
                 continue
-            if begin_check and "_atom_site" not in line:
-                begin_check=False
+            if begin_check==1 and "_atom_site" not in line:
+                begin_check=2#disable further checking
 
     atom_ids = block_list.index('_atom_site.id')
     try:

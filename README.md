@@ -55,7 +55,7 @@ GPU is required for DiffModeler and CryoREAD.
 ### 1. [`Install git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
 ### 2. Clone the repository in your computer 
 ```
-git clone git@github.com:kiharalab/ComplexModeler.git && cd ComplexModeler
+git clone --recurse-submodules https://github.com/kiharalab/ComplexModeler && cd ComplexModeler
 ```
 
 ### 3. Configure environment for ComplexModeler.
