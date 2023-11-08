@@ -7,5 +7,6 @@ cd data
 wget https://huggingface.co/datasets/zhtronics/BLAST_RCSB_AFDB/resolve/main/data.tar.gz.aa
 wget https://huggingface.co/datasets/zhtronics/BLAST_RCSB_AFDB/resolve/main/data.tar.gz.ab
 wget https://huggingface.co/datasets/zhtronics/BLAST_RCSB_AFDB/resolve/main/data.tar.gz.ac
-tar -xvzf data.tar.gz
+cat data.tar.gz.aa data.tar.gz.ab data.tar.gz.ac >data.tar.gz
+tar -xzvf data.tar.gz
 cd ../..
