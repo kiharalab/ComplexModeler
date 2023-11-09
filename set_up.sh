@@ -1,3 +1,7 @@
+mkdir example
+wget https://kiharalab.org/emsuites/complexmodeler/input/20031.mrc
+wget https://kiharalab.org/emsuites/complexmodeler/input/20031.fasta
+cd ..
 mkdir DiffModeler/best_model
 mkdir DiffModeler/data
 cd DiffModeler/best_model

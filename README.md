@@ -158,8 +158,9 @@ If you have successfully installed phenix and coot, please also specify ```--ref
 
 ### Example Command
 ```commandline
-python3 main.py -F=example/21051.mrc -P=example/21051.fasta --contour=0.6 --gpu=0 --output=output_21051 --resolution=3.7
+python3 main.py -F=example/20031.mrc -P=example/20031.fasta --contour=0.6 --gpu=0 --output=output_21051 --resolution=3.7
 ```
+The example dir should be set up by set_up.sh. If not, please download examples [here](https://kiharalab.org/emsuites/complexmodeler/input/) and put into ```example``` directory.  
 The automatically build atomic structure is saved in output_21051/Complex_Modeler.cif. 
 <br>If you have successfully installed phenix and coot, please also specify ```--refine``` in the command line to refine structures.
 
@@ -170,12 +171,12 @@ The automatically build atomic structure is saved in output_21051/Complex_Modele
 <details>
 
 ### Input File
-Cryo-EM map with mrc format. 
+Cryo-EM map with mrc format.   
 Sequence information with fasta format.
-Our example input can be found [here](https://github.com/kiharalab/ComplexModeler/tree/main/example)
+Our example input can be found [here](https://kiharalab.org/emsuites/complexmodeler/input/)
 
 ### Output File 
 ComplexModeler.cif: a CIF file that stores the atomic protein-DNA/RNA structure by our method.
-Our example output can be found [here](https://kiharalab.org/emsuites/complexmodeler/output). All the intermediate results are also kept here. 
+<br>Our example output can be found [here](https://kiharalab.org/emsuites/complexmodeler/output). All the intermediate results are also kept here. 
 
 </details>
