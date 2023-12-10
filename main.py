@@ -116,12 +116,16 @@ if __name__ == "__main__":
         cryoread_pdb_path = os.path.join(save_path,"CryoREAD_norefine.pdb")
     from ops.pdb_utils import pdb2cif,reindex_cif
     dna_cif_path = os.path.join(save_path,"CryoREAD.cif")
-    pdb2cif(cryoread_pdb_path,dna_cif_path)
+    if os.path.exists(cryoread_pdb_path):
+        pdb2cif(cryoread_pdb_path,dna_cif_path)
 
     #combine two cif file
     from ops.os_operation import cat_file
     combine_file = os.path.join(save_path,"protein_drna.cif")
-    cat_file([protein_cif,dna_cif_path],combine_file)
+    if os.path.exists(dna_cif_path):
+        cat_file([protein_cif,dna_cif_path],combine_file)
+    else:
+        cat_file([protein_cif],combine_file)
     final_output = os.path.join(save_path,"ComplexModeler.cif")
     reindex_cif(combine_file,final_output)
     print("Final output kept in %s, Enjoy!"%final_output)
