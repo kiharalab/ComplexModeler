@@ -19,6 +19,8 @@ def pdb2cif(pdb_file, cif_file):
             new_line=""
             new_line += line[:4]+"\t"
             new_line += line[6:11]+"\t"
+            atom_type=  line[12:16].replace(" ","")[0]
+            new_line+=atom_type+"\t"
             new_line += line[12:16]+"\t"
             new_line += line[16]+"\t"
             new_line += line[17:20]+"\t"
@@ -48,6 +50,7 @@ def pdb2cif(pdb_file, cif_file):
         f.write("loop_\n")
         f.write("_atom_site.group_PDB\n")
         f.write("_atom_site.id\n")
+        f.write("_atom_site.type_symbol\n")
         f.write("_atom_site.label_atom_id\n")
         f.write("_atom_site.label_comp_id\n")
         f.write("_atom_site.label_asym_id\n")
