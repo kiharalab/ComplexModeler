@@ -11,7 +11,7 @@ def read_fasta(input_fasta_path):
     tmp_chain_list=[chr(i) for i in range(ord('A'), ord('Z') + 1)]  # uppercase letters
     tmp_chain_list.extend([chr(i) for i in range(ord('a'), ord('z') + 1)])  # lowercase letters
     dna_id_list=[]
-    with open(input_fasta_path,'r') as file:
+    with open(input_fasta_path,'r', encoding='utf-8-sig') as file:
         for line in file:
             if line[0]==">":
                 current_id = line.strip("\n")
