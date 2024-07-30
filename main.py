@@ -32,7 +32,7 @@ def set_up_envrionment(params):
         save_path,map_name = init_save_path(cur_map_path)
     else:
         save_path=params['output']
-        map_name="input"
+        map_name="input_complex"
         mkdir(save_path)
     save_path = os.path.abspath(save_path)
     from CryoREAD.data_processing.Unify_Map import Unify_Map
@@ -70,8 +70,10 @@ if __name__ == "__main__":
     command_line=f"python3 %s --mode=0 -F={cur_map_path} -M {best_model_path} " \
                  f"--contour={half_contour} " \
                  f"--batch_size=4 --prediction_only --output {save_path} "%(cryoread_script)
-    os.system(command_line)
     protein_map_path = os.path.join(save_path,"mask_protein.mrc")
+    if not os.path.exists(protein_map_path):
+        os.system(command_line)
+    
     if not os.path.exists(protein_map_path):
         print("protein detection failed")
         sys.exit(1)
