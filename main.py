@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
     if not os.path.exists(protein_cif):
         print("protein structure modeling DiffModeler failed")
-        sys.exit(1)
+        #sys.exit(1)
     if params['gpu_only']:
         print("GPU part finished")
         sys.exit(1)
@@ -129,8 +129,10 @@ if __name__ == "__main__":
     #combine two cif file
     from ops.os_operation import cat_file
     combine_file = os.path.join(save_path,"protein_drna.cif")
-    if os.path.exists(dna_cif_path):
+    if os.path.exists(dna_cif_path) and os.path.exists(protein_cif):
         cat_file([protein_cif,dna_cif_path],combine_file)
+    elif os.path.exists(dna_cif_path) and not os.path.exists(protein_cif):
+        shutil.copy(dna_cif_path,combine_file)
     else:
         cat_file([protein_cif],combine_file)
     final_output = os.path.join(save_path,"ComplexModeler.cif")
