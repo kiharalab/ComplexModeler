@@ -103,7 +103,7 @@ if __name__ == "__main__":
         print("GPU part finished")
         sys.exit(1)
     if len(dna_id_list)!=0:
-        command_line=f"python3 %s --mode=0 -F={cur_map_path} -P={dna_fasta_path}" \
+        command_line=f"python3 %s --mode=0 -F={cur_map_path} -P={dna_fasta_path} " \
                  f"--contour={half_contour} " \
                  f"--batch_size=4  --output {save_path} --rule_soft=0 " \
                      f"--resolution={resolution} --thread 4 "%(cryoread_script)
